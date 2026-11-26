@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapix.com/css2?family=Jost:ital,wght@0,100..900:1,100..900&display=swap");
+
+
+/*Basic CSS first */
+/*center everything and add a background image which is also centered  */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Jost", sans-serif;
+  min-height: 100vh;
+  background: url("https://github.com/nafizjiwa/hosted-PHOTOS-ASSETS/blob/main/red%20elephant.jpg?raw=true") no-repeat center center/cover;
+}
+
+      /*STYLE THE NAVBAR*/
+      /*MAKE IT STICKY */
+      /*relative unless page */
+      /*scrolled then fixed*/
+.navbar{
+  /* make a flexable layout */
+  display: flex;
+  /* center vertically */
+  align-items: center;
+  /* center horizontally  */
+  justify-content: center;
+  height: 80px;
+  width: 100%;
+   /* make navbar sticky*/
+  position: sticky;
+  /*where to make sticky at top */
+  top: 0px;
+  background: transparent;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  /* keep navbar ontop of all elements with a very high z */
+  z-index: 1000;
+}
+
+     /*STYLE NAVBAR CONTAINER*/
+.navbar-container{
+  /*make flexible layout and center items vertically and space evenly   */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* make all content use the full width so space between is spread evenly otherwise they will be cramped together */
+  width: 100%;
+  /* so not element touches the sides add padding around nav edges */
+  padding: 0 2rem;
+  /* to allow for larger screens set a max width */
+  max-width: 1600px ;
+}
+
+    /*STYLE THE cssnippets LOGO*/
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  /*remove underline  */
+  text-decoration: none;
+  cursor: pointer;
+}
+    /*STYLE NAVBAR MENU SIDE*/
+.navbar-container .navbar-menu{
+    /* flex will put menu items in a row and center them */
+  display: flex;
+  text-align: center;
+  gap: 1.5rem;
+  /* remove bullets */
+  list-style: none;
+}
+
+     /*STYLE MENU ITEM LINKS*/
+.navbar-container .navbar-menu li a{
+     /* remover underline */
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 3px 20px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  transition: all .7s ease;
+     /* no wrap so text doesn't wrap on new line */
+  white-space: nowrap;
+}
+
+    /* style hovering over menu */
+    /* links make round borders */
+    /* and change letter color */
+    /* not stay white..  */
+    /* transition and radius is */
+    /* set in a link css above*/
+.navbar-container .navbar-menu li a:hover,
+.navbar-container .navbar-menu li a.active{
+  color:#162530 ;
+  background: rgba(188, 212, 229, 0.8) ;
+  border: 2px solid #fff;
+}
+
+     /*STYLE the NAV BAR toggle*/
+     /*button. Remove border & */
+     /* transparent background */
+.navbar-toggle{
+  background: transparent;
+  padding: 10px;
+  border: none;
+     /* to make it clickable change to pointer */
+  cursor: pointer;
+     /* to hide toggle bars */
+  display: none;
+}
+
+      /* design bars inside*/
+      /* toggle button  */
+      /* the html already */
+      /* set up as spans */
+.bar{
+     /*put each bar */
+      /* on different */
+      /* line with block  */
+  display: block;
+     /* set height and width*/
+    /* of each bar */
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background: #fff;
+  transition: all .3s ease-in-out;
+}
+
+    /* TO MAKE NAVBAR REPONSIVE*/
+    /* ON ALL MEDIA USE*/
+    /*media query*/
+@media (max-width: 880px) {
+  .navbar {
+    backdrop-filter: none;
+  }
+  
+  .navbar-container .navbar-menu{
+    /*make navbar vertical*/
+    flex-direction: column;
+    /*align items to left*/
+    align-items: flex-start;
+    gap: 1.7rem !important;
+    position: absolute;
+    height: 100vh;
+    width: 175px;
+    top: 0;
+    right: 0;
+    padding: 5rem 1.5rem;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
+    display: none;
+  }
+  
+    /*since toggle will disappear*/
+    /*when menu push to left*/
+  .navbar-toggle{
+    display: block;
+    z-index: 1000;
+  }
+
+  /* create navbar menu active  */
+  /* after click event */
+  .navbar-container .navbar-menu.active{
+    /*set display to flex to make visible */
+    display: flex; 
+  }
+  
+  /*STYLE TOGGLE BUTTON WHEN ACTIVE*/
+  /*FIRST MAKE 2ND BAR INVISIBLE */
+  .navbar-toggle.active .bar:nth-child(2){
+    /*set opacity to 0 */
+    opacity: 0;
+  }
+  
+  /*SECOND MOVE 1ST AND 3RD BAR 45DEG*/
+  /* IN OPPOSIT DIRECTION AND MAKE AN X */
+  .navbar-toggle.active .bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .navbar-toggle.active .bar:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+    
+  }
+}
+
+    /*MEDIA QUERY FOR SMALLER SCREENS  */
+    /* MUST MAKE HOME LINK THE ACTIVE */
+    /* IN SMALL SCREEN SO CHANGE IN HTML */
+@media (max-width: 480px) {
+      .navbar-container{
+       padding: 0 1rem;
+      }
+
+      .navbar-logo{
+        font-size: 1.7rem;
+      }
+
+      .navbar-container .navbar-menu li a{
+        font-size: 1.2rem;
+        padding: 3px 15px;
+        
+      }
+}
